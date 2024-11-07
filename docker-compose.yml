@@ -12,3 +12,13 @@ services:
       - "5432:5432"                      
     networks:
       - app-network
+
+  cache:
+    image: redis
+    container_name: cache_service
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+
