@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres
+    container_name: database_service
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  cache:
+    image: redis
+    container_name: cache_service
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
